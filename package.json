@@ -1,0 +1,21 @@
+{
+  "name": "demoplaywright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phjfranssen/demoplaywright.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phjfranssen/demoplaywright/issues"
+  },
+  "homepage": "https://github.com/phjfranssen/demoplaywright#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.25.1"
+  }
+}
