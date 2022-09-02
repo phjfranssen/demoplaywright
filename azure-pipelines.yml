@@ -17,9 +17,10 @@ steps:
 
 - script: |
     npm install && npx playwright install
-  displayName: 'npm install and playwright'
+  displayName: 'Npm install and install playwright'
 
 - task: Npm@1
   inputs:
     command: 'custom'
     customCommand: 'run test'
+  displayName: 'Run playwright tests'
