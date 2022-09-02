@@ -1,0 +1,52 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- main
+
+pool:
+  vmImage: windows-latest
+
+jobs:
+- job: Install_and_run_playwright
+
+  steps:
+  - script: |
+      npm install && npx playwright install
+    displayName: 'Npm install and install playwright'
+
+  - script: |
+      npx playwright test
+    displayName: 'Run Playwright tests'
+
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: 'JUnit'
+      testResultsFiles: '**/results/test-results.xml'
+    displayName: 'Publish Test Results'
+    condition: succeededOrFailed()
+  
+  - task: PublishHtmlReport@1
+    inputs:
+      reportDir: 'results/index.html'
+    displayName: 'Publish Playwright Testreport'
+    condition: succeededOrFailed()
+
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: '$(System.defaultworkingdirectory)/results'
+      includeRootFolder: true
+      archiveType: 'zip'
+      archiveFile: '$(System.defaultworkingdirectory)/results/testresults.zip'
+      replaceExistingArchive: true
+    displayName: 'Collect and compress testresults to zip file'
+    condition: succeededOrFailed()
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Testresults Artifact'
+    inputs:
+      PathtoPublish: '$(System.defaultworkingdirectory)/results/testresults.zip'
+      ArtifactName: TestScreenshots
+    condition: succeededOrFailed()
