@@ -9,11 +9,14 @@ trigger:
 pool:
   vmImage: windows-latest
 
-steps:
-- script: |
-    npm install && npx playwright install
-  displayName: 'Npm install and install playwright'
+jobs:
+- job: Install-and-run-playwright
+  
+  steps:
+  - script: |
+      npm install && npx playwright install
+    displayName: 'Npm install and install playwright'
 
-- script: |
-    npx playwright test
-  displayName: 'Run Playwright tests'
+  - script: |
+      npx playwright test
+    displayName: 'Run Playwright tests'
