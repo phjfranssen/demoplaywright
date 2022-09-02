@@ -20,3 +20,9 @@ jobs:
   - script: |
       npx playwright test
     displayName: 'Run Playwright tests'
+
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: 'JUnit'
+      testResultsFiles: '**/results/test-results.xml'
+      failTaskOnFailedTests: true
