@@ -28,9 +28,19 @@ jobs:
     displayName: 'Publish Test Results'
     condition: succeededOrFailed()
 
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: TestScreenshots'
+  - task: ArchiveFiles@2
     inputs:
-      PathtoPublish: '$(System.defaultworkingdirectory)/results'
+      rootFolderOrFile: '$(System.defaultworkingdirectory)/results'
+      includeRootFolder: true
+      archiveType: 'zip'
+      archiveFile: '$(System.defaultworkingdirectory)/results/testresults.zip'
+      replaceExistingArchive: true
+    displayName: 'Collect and compress testresults to zip file'
+    condition: succeededOrFailed()
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Testresults Artifact'
+    inputs:
+      PathtoPublish: '$(System.defaultworkingdirectory)/results/testresults.zip'
       ArtifactName: TestScreenshots
     condition: succeededOrFailed()
