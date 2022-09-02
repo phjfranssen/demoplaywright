@@ -10,8 +10,8 @@ pool:
   vmImage: windows-latest
 
 jobs:
-- job: Install-and-run-playwright
-  
+- job: Install_and_run_playwright
+
   steps:
   - script: |
       npm install && npx playwright install
