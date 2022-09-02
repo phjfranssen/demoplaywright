@@ -30,7 +30,7 @@ jobs:
   
   - task: PublishHtmlReport@1
     inputs:
-      reportDir: 'results'
+      reportDir: 'results/test-results.html'
     displayName: 'Publish Playwright Testreport'
     condition: succeededOrFailed()
 
