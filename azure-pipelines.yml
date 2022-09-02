@@ -31,6 +31,8 @@ jobs:
   - task: PublishHtmlReport@1
     inputs:
       reportDir: 'results'
+    displayName: 'Publish Playwright html report'
+    condition: succeededOrFailed()
 
   - task: ArchiveFiles@2
     inputs:
