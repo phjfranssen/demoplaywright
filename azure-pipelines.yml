@@ -33,3 +33,4 @@ jobs:
     inputs:
       PathtoPublish: '$(System.defaultworkingdirectory)/results'
       ArtifactName: TestScreenshots
+    condition: succeededOrFailed()
