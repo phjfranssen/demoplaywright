@@ -27,3 +27,9 @@ jobs:
       testResultsFiles: '**/results/test-results.xml'
     displayName: 'Publish Test Results'
     condition: succeededOrFailed()
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: TestScreenshots'
+    inputs:
+      PathtoPublish: '$(System.defaultworkingdirectory)/results'
+      ArtifactName: TestScreenshots
