@@ -38,6 +38,12 @@ jobs:
       reportDir: 'results/index.html'
     displayName: 'Publish Playwright Testreport'
     condition: succeededOrFailed()
+  
+  - task: PublishHtmlReport@1
+    inputs:
+      reportDir: 'results/cucumber_report.html'
+    displayName: 'Publish Cucumber Testreport'
+    condition: succeededOrFailed()
 
   - task: ArchiveFiles@2
     inputs:
