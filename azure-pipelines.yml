@@ -36,12 +36,14 @@ jobs:
   - task: PublishHtmlReport@1
     inputs:
       reportDir: 'results/index.html'
+      tabName: 'Playwright Report'
     displayName: 'Publish Playwright Testreport'
     condition: succeededOrFailed()
   
   - task: PublishHtmlReport@1
     inputs:
       reportDir: 'results/cucumber_report.html'
+      tabName: 'Cucumber Report'
     displayName: 'Publish Cucumber Testreport'
     condition: succeededOrFailed()
 
