@@ -7,3 +7,4 @@ Feature: obvion actuelerente knop
    Given a user has navigated to the homepage
    When the user clicks actuelerente knop
    Then the title page should be "Actuele hypotheekrente Obvion - Obvion Hypotheken"
+   Then the title page should be "Actuele hypotheekrente Obvion "
