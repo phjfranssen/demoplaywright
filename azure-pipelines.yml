@@ -19,7 +19,12 @@ jobs:
 
   - script: |
       npx playwright test
-    displayName: 'Run Playwright tests'
+    displayName: 'Run Playwright tests - Spec Form'
+    
+  - script: |
+      npm run test:e2e tests/acceptance/features/obvion.feature
+    displayName: 'Run Playwright tests - BDD Form'
+    condition: succeededOrFailed()
 
   - task: PublishTestResults@2
     inputs:
