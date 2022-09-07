@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:e2e": "cucumber-js --require cucumber.config.js --require tests/acceptance/stepDefinitions/**/*.js --format @cucumber/pretty-formatter -f html:results/cucumber_report.html"
+    "test:spec": "npx playwright test",
+    "test:bdd": "npx cucumber-js -p test_runner & node ./htmlReportGenerator.js"
   },
   "repository": {
     "type": "git",
