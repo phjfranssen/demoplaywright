@@ -1,4 +1,4 @@
-const { Before, BeforeAll, AfterAll, After, setDefaultTimeout, Status } = require("@cucumber/cucumber");
+const { Before, After, setDefaultTimeout, Status } = require("@cucumber/cucumber");
 const { chromium } = require("playwright");
 
 setDefaultTimeout(60000);
@@ -15,5 +15,8 @@ Before(async function () {
 
 // close the browser
 After(async function (Scenario) {
+   if (Scenario.result.status === Status.FAILED) {
+      await this.attach(await page.screenshot({path: 'results/screenshots/failedscreenshot.png', fullPage: true }) , "image/png");
+   }
    await global.browser.close();
 });
