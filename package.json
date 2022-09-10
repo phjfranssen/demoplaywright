@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:spec": "npx playwright test",
-    "test:bdd": "npx cucumber-js -p test_runner & node ./htmlReportGenerator.js"
+    "test:spec": "npx playwright test tests/singlefile/",
+    "test:bdd": "npx cucumber-js -p test_runner & node ./htmlReportGenerator.js",
+    "test:structured": "npx playwright test tests/structured/"
   },
   "repository": {
     "type": "git",
