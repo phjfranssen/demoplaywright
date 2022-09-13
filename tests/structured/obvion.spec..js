@@ -18,6 +18,13 @@ test.describe("Home Tests", () => {
   });
 });
 
+  test('Laad Obvion pagina and check rentestanden pagina', async ({ page }) => {
+    const homePage = new HomePage(page);
+    await homePage.navigate();
+    await homePage.gotorentepagina();
+    await homePage.pageTitle("Actuele hypotheekrente Obvion - Obvion Hypotheken");
+  });
+
   test.afterEach(async ({ page}) => {
     await page.close();
   });

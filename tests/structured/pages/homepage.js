@@ -5,11 +5,11 @@ exports.HomePage = class HomePage {
     this.page = page;
     this.acceptCookies = page.locator(`#onetrust-accept-btn-handler`);
     this.logoLoc = page.locator('[alt="Obvion Hypotheken"]');
+    this.actuelerentebutton =  page.locator('//div[@class="modiv-tile-wrapper image-toptile"]//a[contains(.,"Actuele rente")]');
   }
 
   async navigate() {
     await this.page.goto("https://www.obvion.nl/");
-    // Accept cookies
     await this.acceptCookies.click();
   }
 
@@ -17,7 +17,11 @@ exports.HomePage = class HomePage {
     await expect(this.page).toHaveTitle(pagetitle);
   }
 
-  async logo(page) {
+  async logo() {
     await expect(this.logoLoc).toBeVisible();
+  }
+
+  async gotorentepagina() {
+    await this.actuelerentebutton.click();
   }
 };
