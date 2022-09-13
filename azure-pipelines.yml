@@ -19,6 +19,7 @@ jobs:
 
   - script: |
       npm run test:spec
+      npm run test:structured
     displayName: 'Run Playwright tests - Spec Form'
     
   - script: |
