@@ -18,8 +18,7 @@ jobs:
     displayName: 'Npm install and install playwright'
 
   - script: |
-      npm run test:spec
-      npm run test:structured
+      npm run test:spec & npm run test:structured
     displayName: 'Run Playwright tests - Spec Form'
     
   - script: |
