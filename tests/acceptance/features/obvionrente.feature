@@ -1,4 +1,4 @@
-Feature: obvion actuelerente knop
+Feature: Obvion Actuele Rente Page
  As a user
  I want to click the actuelerente button
  So that I can check the actuele rente page
