@@ -19,16 +19,22 @@ test('Laad Obvion pagina and check rentestanden pagina', async ({ page }) => {
 
 });
 
-test('Faal testcase - Laad Obvion pagina and check rentestanden pagina ', async ({ page }) => {
+test('Faal testcase - Zoek naar Obvion Contact Pagina en controleer titel', async ({ page }) => {
   
-  // create a locator
-  const actuelerente = page.locator('//div[@class="modiv-tile-wrapper image-toptile"]//a[contains(.,"Actuele rente")]');
+  // create a locator for search bar
+  const searchbar = page.locator('[placeholder="Typ hier je zoekopdracht\.\.\."]');
 
-  // click locator
-  await actuelerente.click();
+  // create a locator for search button
+  const searchbutton = page.locator('text=Zoeken');
+
+  // enter search criteria 
+  await searchbar.type('contact pagina');
+
+  // click button
+  await searchbutton.click();
 
   //  check page title after loading new page
-  await expect(page).toHaveTitle("Actuele hypotheekrente Obvion - Obvion Hypothekenn");
+  await expect(page).toHaveTitle("Zoeken - Obvion Hypothekenn");
 
 });
 
